@@ -1,0 +1,40 @@
+
+<%- include("header") -%>
+
+  <!-- MAIN CONTAINER -->
+  <div>
+    <div>
+
+      <!-- TITLE AND DATE -->
+      <div id="heading" class="box">
+        <h3> <%= listTitle %> </h3>
+      </div>
+
+      <!-- TODOS FORM AND LIST-->
+      <div class="box">
+
+        <!-- LIST OF TODOS -->
+        <%  for(let t of todoList){ %>
+        <form class="" action="/delete" method="post">
+          <div class="item">
+            <input type="checkbox" name="checkbox" value=<%= t._id %> onChange="this.form.submit()">
+            <p> <%= t.todo %> </p>
+          </div>
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+        </form>
+        <%  } %>
+
+        <!-- FORM TO ADD TODO -->
+        <form class="items" action="/" method="post">
+          <input type="text" name="todo" placeholder="New todo" autofocus="true">
+          <button type="submit" name="list" value=<%= listTitle %>>+</button>
+        </form>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+<%- include("footer") -%>
